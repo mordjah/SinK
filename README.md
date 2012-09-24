@@ -1,2 +1,1 @@
-SinK
-====
+# This is my README
