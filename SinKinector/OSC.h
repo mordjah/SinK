@@ -52,6 +52,8 @@
 @property (retain)    IBOutlet NSTextField        *ui_OSCaddressPartFoot;
 @property (retain)    IBOutlet NSButtonCell       *ui_OSCaddressPartFoot_checkbox;
 
+@property (assign) IBOutlet NSTextFieldCell *ui_OSCDataPacketFormat;
+
 @property (assign) IBOutlet NSButtonCell *ui_OSCaddressPartRight_checkbox;
 @property (assign) IBOutlet NSButton *ui_OSCaddressPartLeft_checkbox;
 @property (assign) IBOutlet NSComboBox *ui_coordinateSystem;

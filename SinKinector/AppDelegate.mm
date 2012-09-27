@@ -68,128 +68,72 @@ NSString *statusImg_unreachable = [[[NSBundle mainBundle] resourcePath]  stringB
 }
 
 
+///////////////////////////////////////////////////////////////////
+// Automatic Callbacks
+///////////////////////////////////////////////////////////////////
+
+// AUTOMATIC: Before the ap is launched
+- (void)applicationWillFinishLaunching:(NSNotification *)aNotification{}
+
 // AUTOMATIC: When the UI is drawn
 - (void)awakeFromNib{
     
     [_userCount setStringValue:@"0"];
 
-    
     //Hide the depth view (we make it visible once it's ready)
     [[AppSettings sharedAppSettings] configSetValueFor:@"mode_depthView" :@"FALSE"];
     _depthView.hidden = true;    
     _button_DepthView.image=[[NSImage alloc] initWithContentsOfFile: [[[NSBundle mainBundle] resourcePath]  stringByAppendingString:@"/led_off.png"]];
     [_button_DepthView setEnabled:false];
-}
-
-
-// AUTOMATIC: Before the ap is launched or something
-- (void)applicationWillFinishLaunching:(NSNotification *)aNotification{
     
-
+    // Turn off the axis for now
+    [_hAxis setHidden:true];
+    [_vAxis setHidden:true];
+    
+    // Hide the counts
+    [_userCount setHidden:true];
+    [_userOnStageCount setHidden:true];
 }
 
 
 // AUTOMATIC: When the application is fully launched
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification{
 
-
-    // Load the default config
+    // Load the default config from disk
     [self loadDefault];
+
+    //FIX: This is not the right way to get the IP, but I'm not sure how
+    _status_localIP.stringValue = [[NSHost currentHost] name];
+    [[AppSettings sharedAppSettings] configSetValueFor:@"localIP" :_status_localIP.stringValue];
+    _status_configFile.stringValue=[[AppSettings sharedAppSettings] configGetValueFor:@"ConfigurationID"];
+
+    // Refresh UI
+    [_osc refreshSettings];
     
-    
+    //On a regular timer, call the "display" function, occurs at 30Hz, or 30fps.
+    //Second line prevents the timer from pausing UI events
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0/30.0 target:self selector:@selector(processFrame) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSEventTrackingRunLoopMode];
+
     // Hide main window
-    //[_mainWindow miniaturize:self];  
-    [_mainWindow makeKeyAndOrderFront:self];
+    //[_mainWindow miniaturize:self];
     
-    // Initialize the kinect
+    // Foreground main window
+    [_mainWindow makeKeyAndOrderFront:self];
+
+    // Initialize the kinect hardware
     [self initKinect];
     
 }
 
 
-// Actions for Menu items
-- (IBAction)reaquire_Kinect:(id)sender { [self initKinect]; }
-
-// Load the configuration
-- (IBAction)config_load:(id)sender { 
-    [[AppSettings sharedAppSettings] readConfigFromDisk];
-    
-    //FIX: This is not the right way to get the IP, but I'm not sure how
-    _status_localIP.stringValue = [[NSHost currentHost] name];
-    [[AppSettings sharedAppSettings] configSetValueFor:@"localIP" :_status_localIP.stringValue];
-    _status_configFile.stringValue=[[AppSettings sharedAppSettings] configGetValueFor:@"ConfigurationID"];
-    
-}
-
-// Save the configuration to disk
-- (IBAction)config_save:(id)sender { 
-    [[AppSettings sharedAppSettings] writeConfigToDisk];
-    
-    //FIX: This is not the right way to get the IP, but I'm not sure how
-    _status_localIP.stringValue = [[NSHost currentHost] name];
-    [[AppSettings sharedAppSettings] configSetValueFor:@"localIP" :_status_localIP.stringValue];
-    _status_configFile.stringValue=[[AppSettings sharedAppSettings] configGetValueFor:@"ConfigurationID"];
-}
-
-// Load the Default config file
-- (IBAction)config_reset:(id)sender { [self loadDefault];}
-- (void) loadDefault{
-    
-    if(![[[AppSettings sharedAppSettings] configGetValueFor:@"mode_configLocked"]isEqualToString:@"TRUE"]){
-        [[AppSettings sharedAppSettings] readDefaultConfigFromDisk];
-        
-        //FIX: This is not the right way to get the IP, but I'm not sure how
-        _status_localIP.stringValue = [[NSHost currentHost] name];
-        [[AppSettings sharedAppSettings] configSetValueFor:@"localIP" :_status_localIP.stringValue];
-        _status_configFile.stringValue=[[AppSettings sharedAppSettings] configGetValueFor:@"ConfigurationID"];
-
-    }
-}
-
-// Button to turn depthview on and off
-- (IBAction)toggle_depthView:(id)sender {   
-    if (_button_DepthView.state == NSOnState){
-        [[AppSettings sharedAppSettings] configSetValueFor:@"mode_depthView" :@"TRUE"];
-        _button_DepthView.image=[[NSImage alloc] initWithContentsOfFile: [[[NSBundle mainBundle] resourcePath]  stringByAppendingString:@"/led_green.png"]];
-        _kinectStatusImage.hidden = true;       
-    }else{
-        [[AppSettings sharedAppSettings] configSetValueFor:@"mode_depthView" :@"FALSE"];
-        _button_DepthView.image=[[NSImage alloc] initWithContentsOfFile: [[[NSBundle mainBundle] resourcePath]  stringByAppendingString:@"/led_red.png"]];
-        _kinectStatusImage.image = [[NSImage alloc] initWithContentsOfFile: statusImg_paused];
-        _kinectStatusImage.hidden = false;
-    }
-
-    mode_displayScene=_button_DepthView.state;
-}
-
-// 
-
-- (IBAction)menu_OSCLogger:(id)sender {
-    //[_window_OSCTool center];
-    [_window_OSCTool makeKeyAndOrderFront:self];
-}
-
-- (IBAction)menu_config:(id)sender {
-    // Center and foreground us  
-    //[_mainWindow center];
-    [_mainWindow makeKeyAndOrderFront:self];
-    
-}
-
-- (IBAction)menu_environment1:(id)sender {
-    // Center and foreground us  
-    //[_window_environment1 center];
-    [_window_environment1 makeKeyAndOrderFront:self];
-}
-
-
-
-
-
-// Initialize the Kinect hardware
+///////////////////////////////////////////////////////////////////
+// Init
+///////////////////////////////////////////////////////////////////
 -(void)initKinect{
 
-    // Indicate we're loading    
+    // Indicate we're loading
+    _depthView.hidden = true;
     _kinectStatusImage.image = [[NSImage alloc] initWithContentsOfFile: statusImg_loading];
     
     //Set up the openni "production unit" using an XML config file
@@ -213,23 +157,23 @@ NSString *statusImg_unreachable = [[[NSBundle mainBundle] resourcePath]  stringB
 
         // Turn off loading image
         _kinectStatusImage.hidden = true;
+        
+        // Show user counts
+        [_userCount setHidden:false];
+        [_userOnStageCount setHidden:false];
+
                
     } else {
         [NotificationCenterWrapper postNotification_status:@"Kinect not found!"];
         _kinectStatusImage.image = [[NSImage alloc] initWithContentsOfFile: statusImg_unreachable];
     }
     
-    
-    //On a regular timer, call the "display" function, occurs at 30Hz, or 30fps... 
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0/30.0 target:self selector:@selector(processFrame) userInfo:nil repeats:YES];      
-    
-    // Prevent the timer from pausing on UI events
-    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSEventTrackingRunLoopMode];
-
-
 }
 
-// TIMERS ////////////////////////////////
+
+///////////////////////////////////////////////////////////////////
+// Timers
+///////////////////////////////////////////////////////////////////
 
 // @30Hz, used to update the OpenGL view for the kinect
 - (void)processFrame {
@@ -388,7 +332,6 @@ NSString *statusImg_unreachable = [[[NSBundle mainBundle] resourcePath]  stringB
         [_userOnStageCount setStringValue:[NSString stringWithFormat:@"%i",usersOnStage]]; 
 
         
-        
         // DISPLAY the scene 
         if (mode_displayScene){
             // OpenGL: Force an update of the framebuffer (fires "drawRect" in DepthView class)
@@ -399,9 +342,47 @@ NSString *statusImg_unreachable = [[[NSBundle mainBundle] resourcePath]  stringB
     }    
 }
 
+///////////////////////////////////////////////////////////////////
+// Actions for Menu items
+///////////////////////////////////////////////////////////////////
+- (IBAction)reaquire_Kinect:(id)sender {
+    [self initKinect];
+}
+
+// Load the configuration
+- (IBAction)config_load:(id)sender {
+    [[AppSettings sharedAppSettings] readConfigFromDisk];
+}
+
+// Save the configuration to disk
+- (IBAction)config_save:(id)sender {
+    [[AppSettings sharedAppSettings] writeConfigToDisk];
+}
+
+// Load the Default config file
+- (IBAction)config_reset:(id)sender {[self loadDefault];}
+- (void) loadDefault{
+    if(![[[AppSettings sharedAppSettings] configGetValueFor:@"mode_configLocked"]isEqualToString:@"TRUE"]){
+        [[AppSettings sharedAppSettings] readDefaultConfigFromDisk];
+    }
+}
+
+- (IBAction)menu_OSCLogger:(id)sender {
+    //[_window_OSCTool center];
+    [_window_OSCTool makeKeyAndOrderFront:self];
+}
+
+- (IBAction)menu_config:(id)sender {
+    // Center and foreground us
+    //[_mainWindow center];
+    [_mainWindow makeKeyAndOrderFront:self];
+    
+}
 
 
-// NOTIFICATION ////////////////////////////////
+///////////////////////////////////////////////////////////////////
+// Notifications
+///////////////////////////////////////////////////////////////////
 
 //HANDLER
 - (void) ncHandler_Generic:(NSNotification *)notification{

@@ -51,6 +51,7 @@
 @synthesize ui_OSCaddressPartAnkle_checkbox;
 @synthesize ui_OSCaddressPartFoot;
 @synthesize ui_OSCaddressPartFoot_checkbox;
+@synthesize ui_OSCDataPacketFormat;
 @synthesize ui_OSCaddressPartRight_checkbox;
 @synthesize OSCToolView;
 @synthesize ui_tabSwitch;
@@ -119,7 +120,7 @@ bool g_led_animating;
 
     // Force reload?
     if ([[[AppSettings sharedAppSettings] configGetValueFor:@"f_forceReload"] isEqualToString:@"TRUE"]){
-        NSLog(@"ForceReload!");
+        
         [self updateUIfromConfig];
         
         // Lock it up
@@ -161,12 +162,10 @@ bool g_led_animating;
     if  ((![[[AppSettings sharedAppSettings] configGetValueFor:@"OSC_ip"] isEqualToString: ui_sendOSC_ip.stringValue]) 
         || (![[[AppSettings sharedAppSettings] configGetValueFor:@"OSC_port"] isEqualToString: ui_sendOSC_port.stringValue])){
     
-    
-        OSCOutput = [OSCmanagerObject 
+        OSCOutput = [OSCmanagerObject
                  createNewOutputToAddress:ui_sendOSC_ip.stringValue 
                  atPort:ui_sendOSC_port.intValue];
     }
-          
        
     // Update the config in memory with whatever the UI says
     [self updateConfigFromUI];
@@ -556,19 +555,50 @@ bool g_led_animating;
             // Send via OSC (finally)
             id newMsg = [OSCMessage createWithAddress:OSCAddress];
             
-            
-            // Projective X and Y coords go out as integers
-            if ([[[AppSettings sharedAppSettings] configGetValueFor:@"coordinateSystem"] isEqualToString:@"OPENNI Projective"]){
-                [newMsg addInt:x];               
-                [newMsg addInt:y];               
-            }else {
-                [newMsg addFloat:x];               
-                [newMsg addFloat:y];               
+            // Parse datapacket tokens
+            NSString *dataPacket= ui_OSCDataPacketFormat.stringValue;
+            dataPacket = [dataPacket stringByReplacingOccurrencesOfString:@" " withString:@""];
+            dataPacket = [dataPacket stringByReplacingOccurrencesOfString:@"{" withString:@""];
+            NSArray *tokens = [dataPacket componentsSeparatedByString: @"}"];
+            for (id thisToken in tokens) {
+                if ([thisToken isEqualToString:@"x"]){
+                    // Projective X and Y coords go out as integers
+                    if ([[[AppSettings sharedAppSettings] configGetValueFor:@"coordinateSystem"] isEqualToString:@"OPENNI Projective"]){
+                        [newMsg addInt:x];
+                    // Real world X and Y cooreds go out as float
+                    }else {
+                        [newMsg addFloat:x];
+                    }
+                }
+                if ([thisToken isEqualToString:@"y"]){
+                    // Projective X and Y coords go out as integers
+                    if ([[[AppSettings sharedAppSettings] configGetValueFor:@"coordinateSystem"] isEqualToString:@"OPENNI Projective"]){
+                        [newMsg addInt:y];
+                    // Real world X and Y cooreds go out as float
+                    }else {
+                        [newMsg addFloat:y];
+                    }
+                }
+                if ([thisToken isEqualToString:@"z"]){
+                    // Z is always float
+                    [newMsg addFloat:z];
+                }
+                if ([thisToken isEqualToString:@"user"]){
+                    // User is integer
+                    [newMsg addInt:u];
+                }
+                if ([thisToken isEqualToString:@"meaningoflife"]){
+                    // User is integer
+                    [newMsg addInt:42];
+                }
             }
-            [newMsg addFloat:z];
+             
+
             
-            // Add the user to the end
-            [newMsg addInt:u];
+                        
+            
+            
+            
             
             
             // Send 
@@ -602,6 +632,8 @@ bool g_led_animating;
 
     
     [ui_OSCAddressPartPrefix setEditable:FALSE];
+    [ui_OSCDataPacketFormat setEditable:FALSE];
+    [ui_OSCDataPacketFormat setBackgroundColor:[NSColor secondarySelectedControlColor]];
     [ui_OSCAddressPartPrefix setEnabled:FALSE];       
     [ui_OSCaddressPartBody setEditable:FALSE];
     [ui_OSCaddressPartBody_checkbox setEnabled:FALSE];
@@ -638,7 +670,9 @@ bool g_led_animating;
   
  
     [ui_OSCAddressPartPrefix setEditable:true];
-    [ui_OSCAddressPartPrefix setEnabled:true];       
+    [ui_OSCAddressPartPrefix setEnabled:true];
+    [ui_OSCDataPacketFormat setEditable:true];
+    [ui_OSCDataPacketFormat setBackgroundColor:[NSColor whiteColor]];
     [ui_OSCaddressPartBody setEditable:true];
     [ui_OSCaddressPartBody_checkbox setEnabled:true];
     
@@ -753,6 +787,8 @@ bool g_led_animating;
     [[AppSettings sharedAppSettings] configSetValueFor:@"OSC_port" :ui_sendOSC_port.stringValue];
     [[AppSettings sharedAppSettings] configSetValueFor:@"OSC_address" :ui_OSCaddressPartFoot.stringValue];
     
+     [[AppSettings sharedAppSettings] configSetValueFor:@"OSCDataPacketFormat" :ui_OSCDataPacketFormat.stringValue];
+    
     [[AppSettings sharedAppSettings] configSetValueFor:@"OSCAddressPartPrefix" :ui_OSCAddressPartPrefix.stringValue];
     [[AppSettings sharedAppSettings] configSetValueFor:@"OSCaddressPartLeft" :ui_OSCaddressPartLeft.stringValue];
     [[AppSettings sharedAppSettings] configSetValueFor:@"OSCaddressPartRight" :ui_OSCaddressPartRight.stringValue];
@@ -798,6 +834,8 @@ bool g_led_animating;
     ui_sendOSC_ip.stringValue = [[AppSettings sharedAppSettings] configGetValueFor:@"OSC_ip"];
     ui_sendOSC_port.stringValue = [[AppSettings sharedAppSettings] configGetValueFor:@"OSC_port"];
     ui_OSCaddressPartFoot.stringValue = [[AppSettings sharedAppSettings] configGetValueFor:@"OSC_address"];
+    
+    ui_OSCDataPacketFormat.stringValue = [[AppSettings sharedAppSettings] configGetValueFor:@"OSCDataPacketFormat"];
     
     ui_OSCAddressPartPrefix.stringValue = [[AppSettings sharedAppSettings] configGetValueFor:@"OSCAddressPartPrefix"];
     ui_OSCaddressPartLeft.stringValue = [[AppSettings sharedAppSettings] configGetValueFor:@"OSCaddressPartLeft"];

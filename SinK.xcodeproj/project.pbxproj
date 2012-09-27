@@ -7,14 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		490A21C11595257D00929285 /* led_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 490A21B91595257D00929285 /* led_green.png */; };
-		490A21C21595257D00929285 /* led_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 490A21BA1595257D00929285 /* led_off.png */; };
-		490A21C31595257D00929285 /* led_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 490A21BB1595257D00929285 /* led_red.png */; };
-		490A21C41595257D00929285 /* sink_kinectPaused.png in Resources */ = {isa = PBXBuildFile; fileRef = 490A21BC1595257D00929285 /* sink_kinectPaused.png */; };
-		490A21C51595257D00929285 /* sink_kinectUnreachable.png in Resources */ = {isa = PBXBuildFile; fileRef = 490A21BD1595257D00929285 /* sink_kinectUnreachable.png */; };
-		490A21C61595257D00929285 /* sink_load.png in Resources */ = {isa = PBXBuildFile; fileRef = 490A21BE1595257D00929285 /* sink_load.png */; };
-		490A21C71595257D00929285 /* SINK-Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = 490A21BF1595257D00929285 /* SINK-Logo.icns */; };
-		490A21C81595257D00929285 /* SINK-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 490A21C01595257D00929285 /* SINK-Logo.png */; };
+		4904ECBB1614783E00E90B57 /* VVBasics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4904ECB81614783D00E90B57 /* VVBasics.framework */; };
+		4904ECBC1614783E00E90B57 /* VVMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4904ECB91614783D00E90B57 /* VVMIDI.framework */; };
+		4904ECBD1614783E00E90B57 /* VVOSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4904ECBA1614783D00E90B57 /* VVOSC.framework */; };
 		490D4DFE1608CBE900DD3A08 /* NotificationCenterWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 490D4DFD1608CB9900DD3A08 /* NotificationCenterWrapper.m */; };
 		491370BF15850CD200285A46 /* OSC.m in Sources */ = {isa = PBXBuildFile; fileRef = 491370BE15850CD100285A46 /* OSC.m */; };
 		492CF949158246AD002D5258 /* OSCLogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 492CF946158234B2002D5258 /* OSCLogItem.m */; };
@@ -22,22 +17,30 @@
 		492CF9521584BD5F002D5258 /* ConsoleLogTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 492CF94E15841037002D5258 /* ConsoleLogTableController.m */; };
 		492CF9531584BD62002D5258 /* ConsoleLogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 492CF95015841037002D5258 /* ConsoleLogItem.m */; };
 		492F15E415EE215D0003A817 /* AppSettings.mm in Sources */ = {isa = PBXBuildFile; fileRef = 492F15E315EE215D0003A817 /* AppSettings.mm */; };
-		4940B9B915F243D400AADE14 /* EnvironmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4940B9B815F243D400AADE14 /* EnvironmentController.m */; };
 		4940B9BC15F2458D00AADE14 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4940B9BA15F2458D00AADE14 /* Quartz.framework */; };
 		4940B9BD15F2458D00AADE14 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4940B9BB15F2458D00AADE14 /* QuartzCore.framework */; };
-		494B2EF2160E75AD00F988E7 /* libOpenNI.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 494B2EED160E75AD00F988E7 /* libOpenNI.dylib */; };
-		49947D931580D2B90059619C /* VVBasics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49947D901580D2B90059619C /* VVBasics.framework */; };
-		49947D941580D2B90059619C /* VVMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49947D911580D2B90059619C /* VVMIDI.framework */; };
-		49947D951580D2B90059619C /* VVOSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49947D921580D2B90059619C /* VVOSC.framework */; };
-		49947D971580D2E00059619C /* VVBasics.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49947D901580D2B90059619C /* VVBasics.framework */; };
-		49947D981580D2E00059619C /* VVMIDI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49947D911580D2B90059619C /* VVMIDI.framework */; };
-		49947D991580D2E00059619C /* VVOSC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49947D921580D2B90059619C /* VVOSC.framework */; };
+		4943626B1614893F00F95FFD /* libOpenNI.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4992191B161478790008A52D /* libOpenNI.dylib */; };
+		4943626C1614893F00F95FFD /* libusb-1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4992191C161478790008A52D /* libusb-1.0.0.dylib */; };
+		4943626D1614893F00F95FFD /* VVBasics.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4904ECB81614783D00E90B57 /* VVBasics.framework */; };
+		4943626E1614893F00F95FFD /* VVMIDI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4904ECB91614783D00E90B57 /* VVMIDI.framework */; };
+		4943626F1614893F00F95FFD /* VVOSC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4904ECBA1614783D00E90B57 /* VVOSC.framework */; };
+		497F43551613AAE000C77E90 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CA8C77157FE4C800F2738D /* AppKit.framework */; };
+		4992191D161478790008A52D /* libOpenNI.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4992191B161478790008A52D /* libOpenNI.dylib */; };
+		4992191E161478790008A52D /* libusb-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4992191C161478790008A52D /* libusb-1.0.0.dylib */; };
+		49921921161478900008A52D /* DEFAULT.CONF in Resources */ = {isa = PBXBuildFile; fileRef = 49921920161478900008A52D /* DEFAULT.CONF */; };
+		4992192A161478B10008A52D /* SINK-Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = 49921922161478B10008A52D /* SINK-Logo.icns */; };
+		4992192B161478B10008A52D /* led_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 49921923161478B10008A52D /* led_green.png */; };
+		4992192C161478B10008A52D /* led_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 49921924161478B10008A52D /* led_off.png */; };
+		4992192D161478B10008A52D /* led_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 49921925161478B10008A52D /* led_red.png */; };
+		4992192E161478B10008A52D /* sink_kinectPaused.png in Resources */ = {isa = PBXBuildFile; fileRef = 49921926161478B10008A52D /* sink_kinectPaused.png */; };
+		4992192F161478B10008A52D /* sink_kinectUnreachable.png in Resources */ = {isa = PBXBuildFile; fileRef = 49921927161478B10008A52D /* sink_kinectUnreachable.png */; };
+		49921930161478B10008A52D /* sink_load.png in Resources */ = {isa = PBXBuildFile; fileRef = 49921928161478B10008A52D /* sink_load.png */; };
+		49921931161478B10008A52D /* SINK-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49921929161478B10008A52D /* SINK-Logo.png */; };
 		49947DA21580D6860059619C /* DepthView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 49947D9B1580D6860059619C /* DepthView.mm */; };
 		49947DA31580D6860059619C /* SceneDrawer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 49947D9D1580D6860059619C /* SceneDrawer.mm */; };
 		49947DA51580D6860059619C /* XnVector3DUtils.cc in Sources */ = {isa = PBXBuildFile; fileRef = 49947DA11580D6860059619C /* XnVector3DUtils.cc */; };
 		49947DA71580D8AC0059619C /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49947DA61580D8AC0059619C /* GLUT.framework */; };
 		49947DA91580D8B50059619C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49947DA81580D8B50059619C /* OpenGL.framework */; };
-		49B170BD15EEC99B009445AE /* DEFAULT.CONF in Resources */ = {isa = PBXBuildFile; fileRef = 49B170BC15EEC99B009445AE /* DEFAULT.CONF */; };
 		49CA8C75157FE4C800F2738D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CA8C74157FE4C800F2738D /* Cocoa.framework */; };
 		49CA8C7F157FE4C800F2738D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49CA8C7D157FE4C800F2738D /* InfoPlist.strings */; };
 		49CA8C81157FE4C800F2738D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CA8C80157FE4C800F2738D /* main.m */; };
@@ -46,7 +49,6 @@
 		49CA8CAA157FE51800F2738D /* CocoaOpenNI.mm in Sources */ = {isa = PBXBuildFile; fileRef = 49CA8CA9157FE51800F2738D /* CocoaOpenNI.mm */; };
 		49CA8CAD157FE52E00F2738D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 49CA8CAC157FE52E00F2738D /* AppDelegate.mm */; };
 		49CA8CB1157FE64200F2738D /* KinectConfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = 49CA8CB0157FE64200F2738D /* KinectConfig.xml */; };
-		49F077A7160E7DBF00B82C88 /* libOpenNI.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 494B2EED160E75AD00F988E7 /* libOpenNI.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,24 +58,20 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				49F077A7160E7DBF00B82C88 /* libOpenNI.dylib in CopyFiles */,
-				49947D971580D2E00059619C /* VVBasics.framework in CopyFiles */,
-				49947D981580D2E00059619C /* VVMIDI.framework in CopyFiles */,
-				49947D991580D2E00059619C /* VVOSC.framework in CopyFiles */,
+				4943626B1614893F00F95FFD /* libOpenNI.dylib in CopyFiles */,
+				4943626C1614893F00F95FFD /* libusb-1.0.0.dylib in CopyFiles */,
+				4943626D1614893F00F95FFD /* VVBasics.framework in CopyFiles */,
+				4943626E1614893F00F95FFD /* VVMIDI.framework in CopyFiles */,
+				4943626F1614893F00F95FFD /* VVOSC.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		490A21B91595257D00929285 /* led_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_green.png; sourceTree = "<group>"; };
-		490A21BA1595257D00929285 /* led_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_off.png; sourceTree = "<group>"; };
-		490A21BB1595257D00929285 /* led_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_red.png; sourceTree = "<group>"; };
-		490A21BC1595257D00929285 /* sink_kinectPaused.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sink_kinectPaused.png; sourceTree = "<group>"; };
-		490A21BD1595257D00929285 /* sink_kinectUnreachable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sink_kinectUnreachable.png; sourceTree = "<group>"; };
-		490A21BE1595257D00929285 /* sink_load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sink_load.png; sourceTree = "<group>"; };
-		490A21BF1595257D00929285 /* SINK-Logo.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "SINK-Logo.icns"; sourceTree = "<group>"; };
-		490A21C01595257D00929285 /* SINK-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SINK-Logo.png"; sourceTree = "<group>"; };
+		4904ECB81614783D00E90B57 /* VVBasics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VVBasics.framework; path = Libraries/VVBasics.framework; sourceTree = "<group>"; };
+		4904ECB91614783D00E90B57 /* VVMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VVMIDI.framework; path = Libraries/VVMIDI.framework; sourceTree = "<group>"; };
+		4904ECBA1614783D00E90B57 /* VVOSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VVOSC.framework; path = Libraries/VVOSC.framework; sourceTree = "<group>"; };
 		490D4DFC1608CB9900DD3A08 /* NotificationCenterWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationCenterWrapper.h; sourceTree = "<group>"; };
 		490D4DFD1608CB9900DD3A08 /* NotificationCenterWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationCenterWrapper.m; sourceTree = "<group>"; };
 		491370BD15850CD100285A46 /* OSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSC.h; sourceTree = "<group>"; };
@@ -88,14 +86,19 @@
 		492CF95115841038002D5258 /* ConsoleLogItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsoleLogItem.h; sourceTree = "<group>"; };
 		492F15E215EE215D0003A817 /* AppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSettings.h; sourceTree = "<group>"; };
 		492F15E315EE215D0003A817 /* AppSettings.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppSettings.mm; sourceTree = "<group>"; };
-		4940B9B715F243D400AADE14 /* EnvironmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnvironmentController.h; sourceTree = "<group>"; };
-		4940B9B815F243D400AADE14 /* EnvironmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnvironmentController.m; sourceTree = "<group>"; };
 		4940B9BA15F2458D00AADE14 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		4940B9BB15F2458D00AADE14 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		494B2EED160E75AD00F988E7 /* libOpenNI.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI.dylib; sourceTree = "<group>"; };
-		49947D901580D2B90059619C /* VVBasics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VVBasics.framework; sourceTree = "<group>"; };
-		49947D911580D2B90059619C /* VVMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VVMIDI.framework; sourceTree = "<group>"; };
-		49947D921580D2B90059619C /* VVOSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VVOSC.framework; sourceTree = "<group>"; };
+		4992191B161478790008A52D /* libOpenNI.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI.dylib; path = Libraries/libOpenNI.dylib; sourceTree = "<group>"; };
+		4992191C161478790008A52D /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusb-1.0.0.dylib"; path = "Libraries/libusb-1.0.0.dylib"; sourceTree = "<group>"; };
+		49921920161478900008A52D /* DEFAULT.CONF */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = DEFAULT.CONF; path = Assets/DEFAULT.CONF; sourceTree = SOURCE_ROOT; };
+		49921922161478B10008A52D /* SINK-Logo.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "SINK-Logo.icns"; path = "Assets/SINK-Logo.icns"; sourceTree = "<group>"; };
+		49921923161478B10008A52D /* led_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = led_green.png; path = Assets/led_green.png; sourceTree = "<group>"; };
+		49921924161478B10008A52D /* led_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = led_off.png; path = Assets/led_off.png; sourceTree = "<group>"; };
+		49921925161478B10008A52D /* led_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = led_red.png; path = Assets/led_red.png; sourceTree = "<group>"; };
+		49921926161478B10008A52D /* sink_kinectPaused.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sink_kinectPaused.png; path = Assets/sink_kinectPaused.png; sourceTree = "<group>"; };
+		49921927161478B10008A52D /* sink_kinectUnreachable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sink_kinectUnreachable.png; path = Assets/sink_kinectUnreachable.png; sourceTree = "<group>"; };
+		49921928161478B10008A52D /* sink_load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sink_load.png; path = Assets/sink_load.png; sourceTree = "<group>"; };
+		49921929161478B10008A52D /* SINK-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SINK-Logo.png"; path = "Assets/SINK-Logo.png"; sourceTree = "<group>"; };
 		49947D9A1580D6860059619C /* DepthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepthView.h; sourceTree = "<group>"; };
 		49947D9B1580D6860059619C /* DepthView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DepthView.mm; sourceTree = "<group>"; };
 		49947D9C1580D6860059619C /* SceneDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDrawer.h; sourceTree = "<group>"; };
@@ -104,7 +107,6 @@
 		49947DA11580D6860059619C /* XnVector3DUtils.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XnVector3DUtils.cc; sourceTree = "<group>"; };
 		49947DA61580D8AC0059619C /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		49947DA81580D8B50059619C /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		49B170BC15EEC99B009445AE /* DEFAULT.CONF */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DEFAULT.CONF; sourceTree = "<group>"; };
 		49CA8C70157FE4C800F2738D /* SinK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SinK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CA8C74157FE4C800F2738D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		49CA8C77157FE4C800F2738D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -129,15 +131,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497F43551613AAE000C77E90 /* AppKit.framework in Frameworks */,
 				4940B9BC15F2458D00AADE14 /* Quartz.framework in Frameworks */,
 				4940B9BD15F2458D00AADE14 /* QuartzCore.framework in Frameworks */,
 				49947DA91580D8B50059619C /* OpenGL.framework in Frameworks */,
 				49947DA71580D8AC0059619C /* GLUT.framework in Frameworks */,
 				49CA8C75157FE4C800F2738D /* Cocoa.framework in Frameworks */,
-				49947D931580D2B90059619C /* VVBasics.framework in Frameworks */,
-				49947D941580D2B90059619C /* VVMIDI.framework in Frameworks */,
-				49947D951580D2B90059619C /* VVOSC.framework in Frameworks */,
-				494B2EF2160E75AD00F988E7 /* libOpenNI.dylib in Frameworks */,
+				4904ECBB1614783E00E90B57 /* VVBasics.framework in Frameworks */,
+				4904ECBC1614783E00E90B57 /* VVMIDI.framework in Frameworks */,
+				4904ECBD1614783E00E90B57 /* VVOSC.framework in Frameworks */,
+				4992191D161478790008A52D /* libOpenNI.dylib in Frameworks */,
+				4992191E161478790008A52D /* libusb-1.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,25 +179,24 @@
 		4999800C1593692F006507E0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				490A21B91595257D00929285 /* led_green.png */,
-				490A21BA1595257D00929285 /* led_off.png */,
-				490A21BB1595257D00929285 /* led_red.png */,
-				490A21BC1595257D00929285 /* sink_kinectPaused.png */,
-				490A21BD1595257D00929285 /* sink_kinectUnreachable.png */,
-				490A21BE1595257D00929285 /* sink_load.png */,
-				490A21BF1595257D00929285 /* SINK-Logo.icns */,
-				490A21C01595257D00929285 /* SINK-Logo.png */,
+				49921922161478B10008A52D /* SINK-Logo.icns */,
+				49921923161478B10008A52D /* led_green.png */,
+				49921924161478B10008A52D /* led_off.png */,
+				49921925161478B10008A52D /* led_red.png */,
+				49921926161478B10008A52D /* sink_kinectPaused.png */,
+				49921927161478B10008A52D /* sink_kinectUnreachable.png */,
+				49921928161478B10008A52D /* sink_load.png */,
+				49921929161478B10008A52D /* SINK-Logo.png */,
 			);
 			name = Resources;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		49CA8C65157FE4C700F2738D = {
 			isa = PBXGroup;
 			children = (
-				4940B9BA15F2458D00AADE14 /* Quartz.framework */,
-				4940B9BB15F2458D00AADE14 /* QuartzCore.framework */,
 				49CA8C7A157FE4C800F2738D /* SinKinector */,
+				4999800C1593692F006507E0 /* Resources */,
+				49CA8C7B157FE4C800F2738D /* Supporting Files */,
 				49CA8C73157FE4C800F2738D /* Frameworks */,
 				49CA8C71157FE4C800F2738D /* Products */,
 			);
@@ -210,15 +213,18 @@
 		49CA8C73157FE4C800F2738D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				494B2EED160E75AD00F988E7 /* libOpenNI.dylib */,
+				4940B9BA15F2458D00AADE14 /* Quartz.framework */,
+				4940B9BB15F2458D00AADE14 /* QuartzCore.framework */,
+				4992191B161478790008A52D /* libOpenNI.dylib */,
+				4992191C161478790008A52D /* libusb-1.0.0.dylib */,
+				4904ECB81614783D00E90B57 /* VVBasics.framework */,
+				4904ECB91614783D00E90B57 /* VVMIDI.framework */,
+				4904ECBA1614783D00E90B57 /* VVOSC.framework */,
 				49947DA81580D8B50059619C /* OpenGL.framework */,
 				49947DA61580D8AC0059619C /* GLUT.framework */,
 				49CA8C77157FE4C800F2738D /* AppKit.framework */,
 				49CA8C78157FE4C800F2738D /* CoreData.framework */,
 				49CA8C79157FE4C800F2738D /* Foundation.framework */,
-				49947D901580D2B90059619C /* VVBasics.framework */,
-				49947D911580D2B90059619C /* VVMIDI.framework */,
-				49947D921580D2B90059619C /* VVOSC.framework */,
 				49CA8C74157FE4C800F2738D /* Cocoa.framework */,
 				49CA8C92157FE4C800F2738D /* SenTestingKit.framework */,
 			);
@@ -239,12 +245,8 @@
 				49CA8CAB157FE52D00F2738D /* AppDelegate.h */,
 				49CA8CAC157FE52E00F2738D /* AppDelegate.mm */,
 				49CA8C89157FE4C800F2738D /* MainMenu.xib */,
-				4940B9B715F243D400AADE14 /* EnvironmentController.h */,
-				4940B9B815F243D400AADE14 /* EnvironmentController.m */,
 				492CF941158234A6002D5258 /* OSC */,
 				49947D8F1580D25A0059619C /* CocoaOpenNI-johnboiles */,
-				4999800C1593692F006507E0 /* Resources */,
-				49CA8C7B157FE4C800F2738D /* Supporting Files */,
 			);
 			path = SinKinector;
 			sourceTree = "<group>";
@@ -252,7 +254,7 @@
 		49CA8C7B157FE4C800F2738D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				49B170BC15EEC99B009445AE /* DEFAULT.CONF */,
+				49921920161478900008A52D /* DEFAULT.CONF */,
 				49CA8CB0157FE64200F2738D /* KinectConfig.xml */,
 				49CA8C7C157FE4C800F2738D /* SinKinector-Info.plist */,
 				49CA8C7D157FE4C800F2738D /* InfoPlist.strings */,
@@ -261,6 +263,7 @@
 				49CA8C83157FE4C800F2738D /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			path = SinKinector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,15 +322,15 @@
 				49CA8C85157FE4C800F2738D /* Credits.rtf in Resources */,
 				49CA8C8B157FE4C800F2738D /* MainMenu.xib in Resources */,
 				49CA8CB1157FE64200F2738D /* KinectConfig.xml in Resources */,
-				490A21C11595257D00929285 /* led_green.png in Resources */,
-				490A21C21595257D00929285 /* led_off.png in Resources */,
-				490A21C31595257D00929285 /* led_red.png in Resources */,
-				490A21C41595257D00929285 /* sink_kinectPaused.png in Resources */,
-				490A21C51595257D00929285 /* sink_kinectUnreachable.png in Resources */,
-				490A21C61595257D00929285 /* sink_load.png in Resources */,
-				490A21C71595257D00929285 /* SINK-Logo.icns in Resources */,
-				490A21C81595257D00929285 /* SINK-Logo.png in Resources */,
-				49B170BD15EEC99B009445AE /* DEFAULT.CONF in Resources */,
+				49921921161478900008A52D /* DEFAULT.CONF in Resources */,
+				4992192A161478B10008A52D /* SINK-Logo.icns in Resources */,
+				4992192B161478B10008A52D /* led_green.png in Resources */,
+				4992192C161478B10008A52D /* led_off.png in Resources */,
+				4992192D161478B10008A52D /* led_red.png in Resources */,
+				4992192E161478B10008A52D /* sink_kinectPaused.png in Resources */,
+				4992192F161478B10008A52D /* sink_kinectUnreachable.png in Resources */,
+				49921930161478B10008A52D /* sink_load.png in Resources */,
+				49921931161478B10008A52D /* SINK-Logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +354,6 @@
 				492CF94A158246B0002D5258 /* OSCLogTableController.m in Sources */,
 				491370BF15850CD200285A46 /* OSC.m in Sources */,
 				492F15E415EE215D0003A817 /* AppSettings.mm in Sources */,
-				4940B9B915F243D400AADE14 /* EnvironmentController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,15 +442,17 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Libraries\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SinKinector/SinKinector-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Include\"";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Headers\"";
 				INFOPLIST_FILE = "SinKinector/SinKinector-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @loader_path/../Frameworks @rpath/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Libraries\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -463,15 +467,17 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Libraries\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SinKinector/SinKinector-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Include\"";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Headers\"";
 				INFOPLIST_FILE = "SinKinector/SinKinector-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @loader_path/../Frameworks @rpath/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Libraries\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

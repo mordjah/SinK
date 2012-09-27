@@ -30,6 +30,7 @@
 @property (assign) IBOutlet NSMenu *menu_environment1;
 @property (assign) IBOutlet NSWindow *window_environment1;
 
+
 // Add a new outlet for the OSC instance created in the nib.
 // You also have to bind this in IB by ctrl-dragging from 
 // the app delegate to the OSC and setting it to "osc."
